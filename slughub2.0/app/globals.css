@@ -1,0 +1,66 @@
+/* --- Custom Pixel Font Setup --- */
+@font-face {
+  font-family: 'PixelFont';
+  src: url('/pixel.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; 
+}
+
+/* Apply the font globally, overriding system defaults and Tailwind's font-sans */
+body, h1, h2, h3, button, input, select, textarea {
+    font-family: 'PixelFont', sans-serif !important;
+}
+
+/* Ensure smooth theme transitions */
+html {
+  transition-property: background-color, color;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* --- SLUG MODE CUSTOM STYLES --- */
+
+/* 1. Targets the whole page background when 'slug' class is on <html> */
+html.slug {
+  background-color: #FEEFAD; /* Yellow background */
+  color: #333; /* Dark text for readability */
+}
+
+/* 2. Targets the main To-Do List card (using the .todo-card class added to TodoList.tsx) */
+html.slug .todo-card {
+  background-color: #FFF6C3 !important; /* Lighter yellow for the card */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 3. Overrides default gray backgrounds/areas for Slug Mode to use yellow tones */
+/* Targets inputs, date tabs, and input area containers */
+html.slug .bg-gray-100,
+html.slug .bg-gray-50,
+html.slug .dark\:bg-gray-900 {
+  background-color: #FFEE99 !important; 
+}
+
+/* 4. Ensures inputs are white/light in slug mode for contrast */
+html.slug input {
+  background-color: #FFF !important; 
+  color: #333 !important;
+  border-color: #FDD835 !important;
+}
+
+/* 5. Ensures dark mode colors are overridden by dark text in slug mode */
+html.slug .text-gray-900, 
+html.slug .dark\:text-white,
+html.slug h1, html.slug h2, html.slug h3 {
+    color: #333 !important;
+}
+
+/* 6. Ensures the inner gray bar for buttons/inputs also goes yellow/light */
+html.slug .dark\:bg-gray-700 {
+    background-color: #FFF6C3 !important;
+}
